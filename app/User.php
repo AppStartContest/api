@@ -1,29 +1,42 @@
 <?php
-
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Authenticatable
+
+class User extends Model
 {
-    use Notifiable;
+    public $incrementing = false;
+    public $primaryKey = 'phone';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+	use SoftDeletes;
+	protected $fillable = ['phone', 'name'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+	public function rooms(){
+		return $this->belongsToMany('App\Room');
+	}
+
+
+	public function expenses(){
+		return $this->hasMany('App\Expense');
+	}
+
+	public function concerningExpenses(){
+	    return $this->belongsToMany('App\Expense');
+    }
+
+
+	public function messages(){
+		return $this->hasMany('App\messages');
+	}
+
+
+	// scopes
+
+    public function scopeWithExpensesInRoom($query, $roomId){
+        return $query->with(['expenses' => function ($query) use ($roomId){
+            $query->where('room_id', $roomId);
+        }]);
+    }
 }

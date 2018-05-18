@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::any('users/{phone}/rooms/{roomId}/expenses/{id?}', 'Rest\\ExpensesController@expenses');
+Route::any('rooms/{roomId}/users/{phone}/expenses/{id?}', 'Rest\\ExpensesController@rooms_expenses');
+
+Route::any('users/{phone}/rooms/{roomId}/concerning_expenses/{id?}', 'Rest\\ExpensesController@concerningExpenses');
+Route::any('rooms/{roomId}/users/{phone}/concerning_expenses/{id?}', 'Rest\\ExpensesController@rooms_concerningExpenses');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "61b50e155300b6fc52888776971e2048",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1264,6 +1264,51 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "robinmarechal/laravel-rest-api",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobinMarechal/laravel-rest-api.git",
+                "reference": "e09a5dabe09013b19a8a6264b3ad7c63c18e58ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobinMarechal/laravel-rest-api/zipball/e09a5dabe09013b19a8a6264b3ad7c63c18e58ce",
+                "reference": "e09a5dabe09013b19a8a6264b3ad7c63c18e58ce",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RobinMarechal\\RestApi\\RestApiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RobinMarechal\\RestApi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "RobinMarechal",
+                    "email": "robin.marechal-2@etu.univ-tours.fr"
+                }
+            ],
+            "description": "An easy way to add a REST API to your project",
+            "keywords": [
+                "api",
+                "laravel",
+                "rest"
+            ],
+            "time": "2018-05-16T16:04:50+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
