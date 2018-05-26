@@ -36,4 +36,8 @@ class Room extends Model
 	        $query->where('user_phone', $userPhone);
         }]);
     }
+
+    public function scopeWithAll($query){
+        return $query->with('users', 'expenses', 'events', 'messages');
+    }
 }

@@ -25,7 +25,7 @@ INSERT INTO `asc_users` (`phone`, `deleted_at`, `name`) VALUES
 (\'4\', NULL, \'user4\'),
 (\'5\', NULL, \'user3\');
 
-INSERT INTO `asc_room_user` (`room_id`, `user_phone`) VALUES
+INSERT INTO `asc_room_user` (`room_id`, `user_id`) VALUES
 (1, \'1\'),
 (2, \'1\'),
 (1, \'2\'),
@@ -40,7 +40,7 @@ INSERT INTO `asc_events` (`id`, `created_at`, `updated_at`, `deleted_at`, `room_
 (2, \'2018-05-18 17:38:15\', \'2018-05-18 17:38:15\', NULL, 2, \'Beer fest\', \'2018-05-18\', NULL, \' blablabla blablabla blablabla blablabla blablabla\'),
 (3, \'2018-05-18 17:38:38\', \'2018-05-18 17:38:38\', NULL, 2, \'\', \'2018-05-29\', NULL, \'zzaeazazarazrazraz\');
 
-INSERT INTO `asc_expenses` (`id`, `created_at`, `updated_at`, `deleted_at`, `user_phone`, `room_id`, `value`, `description`) VALUES
+INSERT INTO `asc_expenses` (`id`, `created_at`, `updated_at`, `deleted_at`, `user_id`, `room_id`, `value`, `description`) VALUES
 (1, \'2018-05-18 17:27:12\', \'2018-05-18 17:27:12\', NULL, \'1\', 1, 10.00, \'Boulangerie\'),
 (2, \'2018-05-18 17:27:12\', \'2018-05-18 17:27:12\', NULL, \'2\', 1, 5.00, \'Jsp\'),
 (3, \'2018-05-18 17:27:12\', \'2018-05-18 17:27:12\', NULL, \'1\', 1, 15.00, \'ertyui\'),
@@ -51,7 +51,7 @@ INSERT INTO `asc_expenses` (`id`, `created_at`, `updated_at`, `deleted_at`, `use
 (8, \'2018-05-18 17:27:12\', \'2018-05-18 17:27:12\', NULL, \'5\', 2, 60.00, \'azeraezrazer\'),
 (9, \'2018-05-18 17:27:12\', \'2018-05-18 17:27:12\', NULL, \'4\', 2, 39.99, \'azeazer\');
 
-INSERT INTO `asc_expense_user` (`expense_id`, `user_phone`) VALUES
+INSERT INTO `asc_expense_user` (`expense_id`, `user_id`) VALUES
 (1, \'1\'),
 (2, \'1\'),
 (3, \'1\'),
@@ -77,7 +77,7 @@ INSERT INTO `asc_expense_user` (`expense_id`, `user_phone`) VALUES
 (6, \'5\'),
 (9, \'5\');
 
-INSERT INTO `asc_messages` (`id`, `created_at`, `updated_at`, `deleted_at`, `user_phone`, `room_id`, `expense_id`, `event_id`, `content`) VALUES
+INSERT INTO `asc_messages` (`id`, `created_at`, `updated_at`, `deleted_at`, `user_id`, `room_id`, `expense_id`, `event_id`, `content`) VALUES
 (29, \'2018-05-18 17:37:08\', \'2018-05-18 17:37:08\', NULL, \'1\', 1, NULL, NULL, \'Hello !\'),
 (30, \'2018-05-18 19:00:00\', \'2018-05-18 17:37:08\', NULL, \'2\', NULL, NULL, NULL, \'Salut toi !\'),
 (31, \'2018-05-18 17:37:08\', \'2018-05-18 17:37:08\', NULL, \'1\', 1, NULL, NULL, \'azerazer\'),

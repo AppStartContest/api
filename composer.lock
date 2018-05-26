@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "61b50e155300b6fc52888776971e2048",
+    "content-hash": "faf91f9ac268b79697469f6dca2be815",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1267,16 +1267,16 @@
         },
         {
             "name": "robinmarechal/laravel-rest-api",
-            "version": "v0.1.1",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinMarechal/laravel-rest-api.git",
-                "reference": "e09a5dabe09013b19a8a6264b3ad7c63c18e58ce"
+                "reference": "657dff0e16610a8d5f5aa011ca683607ae02c370"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinMarechal/laravel-rest-api/zipball/e09a5dabe09013b19a8a6264b3ad7c63c18e58ce",
-                "reference": "e09a5dabe09013b19a8a6264b3ad7c63c18e58ce",
+                "url": "https://api.github.com/repos/RobinMarechal/laravel-rest-api/zipball/657dff0e16610a8d5f5aa011ca683607ae02c370",
+                "reference": "657dff0e16610a8d5f5aa011ca683607ae02c370",
                 "shasum": ""
             },
             "require": {
@@ -1308,7 +1308,7 @@
                 "laravel",
                 "rest"
             ],
-            "time": "2018-05-16T16:04:50+00:00"
+            "time": "2018-05-20T16:29:16+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

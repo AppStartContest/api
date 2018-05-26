@@ -18,4 +18,8 @@ class Event extends Model
 	public function room(){
 		return $this->belongsTo('App\Room');
 	}
+
+    public function scopeWithAll($query){
+        return $query->with('messages', 'room');
+    }
 }

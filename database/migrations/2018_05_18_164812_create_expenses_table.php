@@ -19,7 +19,7 @@ class CreateExpensesTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->softDeletes();
 
-            $table->string('user_phone', 11);
+            $table->integer('user_id')->unsigned();
             $table->integer('room_id')->unsigned();
 
             $table->float('value');

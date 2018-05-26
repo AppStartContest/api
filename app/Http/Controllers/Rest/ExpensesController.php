@@ -14,11 +14,9 @@ class ExpensesController extends Controller
 {
     public function expenses($phone, $roomId, $id = null)
     {
-        switch ($this->request->getMethod()){
-            case 'GET': return $this->getExpenses($phone, $roomId, $id);
-        }
+        $data = $this->getExpenses($phone, $roomId, $id);
 
-        return JsonResponse::create(['data' => 'Not implemented yet'], Response::HTTP_NOT_IMPLEMENTED);
+        return RestResponse::make($data, 200)->toJsonResponse();
     }
 
 
@@ -30,10 +28,9 @@ class ExpensesController extends Controller
 
     public function concerningExpenses($phone, $roomId, $id = null)
     {
-        switch ($this->request->getMethod()){
-            case 'GET': return $this->getConcerning($phone, $roomId, $id);
-        }
-        return JsonResponse::create(['data' => 'Not implemented yet'], Response::HTTP_NOT_IMPLEMENTED);
+        $data = $this->getConcerning($phone, $roomId, $id);
+
+        return RestResponse::make($data, 200)->toJsonResponse();
     }
 
 
@@ -43,12 +40,12 @@ class ExpensesController extends Controller
     }
 
 
-    public function getExpenses($phone, $roomId, $id = null)
+    private function getExpenses($phone, $roomId, $id = null)
     {
-        $expenses = [];
-        if (!is_null($id)) {
+        if (is_null($id)) {
             // all
-            $query = QueryBuilder::getPreparedQuery(Expense::class);
+            $query = QueryBuilder::prepareQuery(Expense::class);
+
             $expenses = $query->ofUserAndRoom($phone, $roomId)->get();
         }
         else {
@@ -56,24 +53,24 @@ class ExpensesController extends Controller
             $expenses = $query->ofUserAndRoom($phone, $roomId)->find($id);
         }
 
-        return RestResponse::make($expenses, 200)->toJsonResponse();
+        return $expenses;
     }
 
 
-    public function getConcerning($phone, $roomId, $id = null)
+    private function getConcerning($phone, $roomId, $id = null)
     {
-        $data = User::with(['concerningExpenses' => function($query) use ($id, $roomId){
-            $qeury = QueryBuilder::buildQuery($query, Expense::class);
+        $data = User::with(['concerningExpenses' => function ($query) use ($id, $roomId) {
+            $query = QueryBuilder::buildQuery($query, Expense::class);
             $query = $query->where('room_id', $roomId);
-            if(!is_null($id)){
+            if (!is_null($id)) {
                 $query->where('id', $id);
             }
         }])->find($phone);
 
-        if(!is_null($data)){
+        if (!is_null($data)) {
             $data = $data->concerningExpenses;
         }
 
-        return RestResponse::make($data, 200)->toJsonResponse();
+        return $data;
     }
 }

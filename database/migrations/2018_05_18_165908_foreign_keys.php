@@ -18,7 +18,7 @@ class ForeignKeys extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->foreign('user_phone')->references('phone')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
         });
@@ -28,7 +28,7 @@ class ForeignKeys extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->foreign('user_phone')->references('phone')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
         });
@@ -38,7 +38,7 @@ class ForeignKeys extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->foreign('user_phone')->references('phone')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
         });
@@ -50,7 +50,7 @@ class ForeignKeys extends Migration
         });
 
         Schema::table('messages', function (Blueprint $table) {
-            $table->foreign('user_phone')->references('phone')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
@@ -77,18 +77,18 @@ class ForeignKeys extends Migration
     public function down()
     {
         Schema::table('room_user', function (Blueprint $table) {
-            $table->dropForeign('room_user_user_phone_foreign');
+            $table->dropForeign('room_user_user_id_foreign');
             $table->dropForeign('room_user_room_id_foreign');
         });
 
         Schema::table('expense_user', function (Blueprint $table) {
             $table->dropForeign('expense_user_expense_id_foreign');
-            $table->dropForeign('expense_user_user_phone_foreign');
+            $table->dropForeign('expense_user_user_id_foreign');
         });
 
         Schema::table('expenses', function (Blueprint $table) {
             $table->dropForeign('expenses_room_id_foreign');
-            $table->dropForeign('expenses_user_phone_foreign');
+            $table->dropForeign('expenses_user_id_foreign');
         });
 
         Schema::table('events', function (Blueprint $table) {
@@ -99,7 +99,7 @@ class ForeignKeys extends Migration
             $table->dropForeign('messages_room_id_foreign');
             $table->dropForeign('messages_event_id_foreign');
             $table->dropForeign('messages_expense_id_foreign');
-            $table->dropForeign('messages_user_phone_foreign');
+            $table->dropForeign('messages_user_id_foreign');
         });
     }
 }

@@ -9,7 +9,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "robinmarechal/laravel-rest-api": "0.1.*"
+        "robinmarechal/laravel-rest-api": "0.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

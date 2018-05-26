@@ -37,4 +37,8 @@ class Expense extends Model
     public function scopeOfUserAndRoom($query, $userPhone, $roomId){
 	    return $query->ofUser($userPhone)->ofRoom($roomId);
     }
+
+    public function scopeWithAll($query){
+	    return $query->with('user', 'room', 'messages');
+    }
 }

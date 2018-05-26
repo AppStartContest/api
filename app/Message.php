@@ -14,4 +14,8 @@ class Message extends Model
 	    return $this->belongsTo('App\User');
     }
 
+    public function scopeWithAll($query){
+        return $query->with('user');
+    }
+
 }

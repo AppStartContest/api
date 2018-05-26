@@ -15,16 +15,16 @@ class CreatePivotsTables extends Migration
     {
         Schema::create('room_user', function(Blueprint $table){
             $table->integer('room_id')->unsigned();
-            $table->string('user_phone', 11);
+            $table->integer('user_id')->unsigned();
 
-            $table->primary(['room_id', 'user_phone']);
+            $table->primary(['room_id', 'user_id']);
         });
 
         Schema::create('expense_user', function(Blueprint $table){
             $table->integer('expense_id')->unsigned();
-            $table->string('user_phone', 11);
+            $table->integer('user_id')->unsigned();
 
-            $table->primary(['expense_id', 'user_phone']);
+            $table->primary(['expense_id', 'user_id']);
         });
     }
 

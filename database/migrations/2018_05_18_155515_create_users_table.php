@@ -15,11 +15,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('phone', 11);
+            $table->increments('id');
+            $table->string('phone', 11)->unique();
             $table->softDeletes();
             $table->string('name', 30);
-
-            $table->primary('phone');
         });
     }
 

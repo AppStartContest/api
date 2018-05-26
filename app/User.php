@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Model
 {
     public $incrementing = false;
-    public $primaryKey = 'phone';
 
 	use SoftDeletes;
 	protected $fillable = ['phone', 'name'];
@@ -38,5 +37,9 @@ class User extends Model
         return $query->with(['expenses' => function ($query) use ($roomId){
             $query->where('room_id', $roomId);
         }]);
+    }
+
+    public function scopeWithAll($query){
+        return $query->with('rooms', 'expenses', 'concerningExpenses', 'messages');
     }
 }

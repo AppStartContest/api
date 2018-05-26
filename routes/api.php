@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::any('users/{phone}/rooms/{roomId}/expenses/{id?}', 'Rest\\ExpensesController@expenses');
-Route::any('rooms/{roomId}/users/{phone}/expenses/{id?}', 'Rest\\ExpensesController@rooms_expenses');
+Route::get('users/{phone}/rooms/{roomId}/expenses/{id?}', 'Rest\\ExpensesController@expenses');
+Route::get('rooms/{roomId}/users/{phone}/expenses/{id?}', 'Rest\\ExpensesController@rooms_expenses');
 
-Route::any('users/{phone}/rooms/{roomId}/concerning_expenses/{id?}', 'Rest\\ExpensesController@concerningExpenses');
-Route::any('rooms/{roomId}/users/{phone}/concerning_expenses/{id?}', 'Rest\\ExpensesController@rooms_concerningExpenses');
+Route::get('users/{phone}/rooms/{roomId}/concerning_expenses/{id?}', 'Rest\\ExpensesController@concerningExpenses');
+Route::get('rooms/{roomId}/users/{phone}/concerning_expenses/{id?}', 'Rest\\ExpensesController@rooms_concerningExpenses');
