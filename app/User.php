@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
-    public $incrementing = false;
-
 	use SoftDeletes;
+	public $timestamps = false;
 	protected $fillable = ['phone', 'name'];
 
 	public function rooms(){
