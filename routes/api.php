@@ -18,3 +18,6 @@ Route::get('rooms/{roomId}/users/{phone}/expenses/{id?}', 'Rest\\ExpensesControl
 
 Route::get('users/{phone}/rooms/{roomId}/concerning_expenses/{id?}', 'Rest\\ExpensesController@concerningExpenses');
 Route::get('rooms/{roomId}/users/{phone}/concerning_expenses/{id?}', 'Rest\\ExpensesController@rooms_concerningExpenses');
+
+Route::post('/auth', 'Rest\\UsersController@auth');
+Route::post('/register', 'Rest\\UsersController@register');
