@@ -33,7 +33,7 @@ class Room extends Model
 
     public function scopeWithExpensesOfUser($query, $userPhone){
 	    return $query->with(['expenses' => function($query) use ($userPhone) {
-	        $query->where('user_phone', $userPhone);
+	        $query->where('user_id', $userPhone);
         }]);
     }
 
