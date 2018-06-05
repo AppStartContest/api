@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
 	use SoftDeletes;
-	protected $fillable = ['room_id', 'name', 'data', 'time', 'description'];
+	protected $fillable = ['room_id', 'name', 'date', 'time', 'description'];
 
 	public function messages(){
 		return $this->hasMany('App\Message');
