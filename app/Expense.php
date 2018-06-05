@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Expense extends Model
 {
 	use SoftDeletes;
-	protected $fillable = ['user_phone', 'room_id', 'value', 'description'];
+	protected $fillable = ['user_phone', 'room_id', 'user_id', 'value', 'description'];
 
 	public function user(){
 		return $this->belongsTo('App\User');

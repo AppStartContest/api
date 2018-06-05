@@ -23,7 +23,7 @@ class CreateExpensesTable extends Migration
             $table->integer('room_id')->unsigned();
 
             $table->float('value');
-            $table->string('description', 50);
+            $table->string('description', 50)->nullable();
         });
     }
 
