@@ -3,7 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use RobinMarechal\RestApi\Rest\RestResponse;
+use Symfony\Component\Debug\Exception\ClassNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -26,10 +30,11 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -37,15 +42,21 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
 
+
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $e)
     {
-        return parent::render($request, $exception);
+        if ($request->header('Content-Type') === 'application/json' &&
+            ($e instanceof NotFoundHttpException || $e instanceof QueryException || $e instanceof ClassNotFoundException)) {
+            return RestResponse::error($e->getMessage())->toJsonResponse();
+        }
+
+        return parent::render($request, $e);
     }
 }
